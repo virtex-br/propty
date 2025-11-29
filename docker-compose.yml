@@ -1,0 +1,22 @@
+name: propty
+services:
+  db:
+    image: timescale/timescaledb-ha:pg16
+    container_name: propty.db
+    restart: always
+    environment:
+      POSTGRES_DB: propty
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - "pgdata:/home/postgres/pgdata/data"
+      - "./data:/home/postgres/data"
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: /usr/bin/pg_isready
+      interval: 5s
+      timeout: 10s
+      retries: 120
+volumes:
+  pgdata:

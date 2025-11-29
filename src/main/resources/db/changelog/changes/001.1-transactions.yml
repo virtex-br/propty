@@ -1,0 +1,61 @@
+databaseChangeLog:
+    - changeSet:
+          id: 001-sale
+          author: benr
+          changes:
+              - createTable:
+                    tableName: sale
+                    columns:
+                        - column:
+                              name: id
+                              type: VARCHAR(38)
+                              constraints:
+                                  nullable: false
+                                  primaryKey: true
+                                  primaryKeyName: sale_pkey
+                        - column:
+                              name: price
+                              type: NUMERIC
+                        - column:
+                              name: timestamp
+                              type: TIMESTAMP
+                        - column:
+                              name: postcode
+                              type: VARCHAR(10)
+                        - column:
+                              name: property_type
+                              type: VARCHAR(1)
+                        - column:
+                              name: new_build
+                              type: boolean
+                        - column:
+                              name: duration
+                              type: VARCHAR(1)
+                        - column:
+                              name: paon
+                              type: VARCHAR(255)
+                        - column:
+                              name: saon
+                              type: VARCHAR(255)
+                        - column:
+                              name: street
+                              type: VARCHAR(255)
+                        - column:
+                              name: locality
+                              type: VARCHAR(255)
+                        - column:
+                              name: town_city
+                              type: VARCHAR(255)
+                        - column:
+                              name: district
+                              type: VARCHAR(255)
+                        - column:
+                              name: county
+                              type: VARCHAR(255)
+                        - column:
+                              name: ppd_category
+                              type: VARCHAR(1)
+                        - column:
+                              name: record_status
+                              type: VARCHAR(1)
+          rollback: DROP TABLE sale

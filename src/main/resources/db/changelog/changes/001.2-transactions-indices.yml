@@ -1,0 +1,33 @@
+databaseChangeLog:
+      - changeSet:
+              id: 001-sale-indices
+              author: benr
+              changes:
+                    - createIndex:
+                            indexName: sale_postcode_idx
+                            tableName: sale
+                            columns:
+                                  - column:
+                                          name: postcode
+                    - createIndex:
+                            indexName: sale_property_type_idx
+                            tableName: sale
+                            columns:
+                                  - column:
+                                          name: property_type
+                    - createIndex:
+                            indexName: sale_date_idx
+                            tableName: sale
+                            columns:
+                                  - column:
+                                          name: timestamp
+              rollback:
+                    - dropIndex:
+                            indexName: sale_postcode_idx
+                            tableName: sale
+                    - dropIndex:
+                            indexName: sale_property_type_idx
+                            tableName: sale
+                    - dropIndex:
+                            indexName: sale_date_idx
+                            tableName: sale
